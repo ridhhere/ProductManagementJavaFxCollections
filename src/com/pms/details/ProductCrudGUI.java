@@ -177,7 +177,7 @@ public class ProductCrudGUI {
 		Label heading = new Label("View Product By ID");
 		heading.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #007bff;");
 
-		Label productID1 = new Label("Enter Product Price:");
+		Label productID1 = new Label("Enter Product ID:");
 		TextField titleField1 = new TextField();
 
 		// Create a button for submitting the product details
@@ -261,7 +261,7 @@ public class ProductCrudGUI {
 		Label heading = new Label("Update Product By ID");
 		heading.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #007bff;");
 
-		Label productID1 = new Label("Enter Product Price:");
+		Label productID1 = new Label("Enter Product ID:");
 		TextField titleField1 = new TextField();
 
 		Label productName = new Label("Enter Product Name:");
@@ -359,7 +359,7 @@ public class ProductCrudGUI {
 		Label heading = new Label("Delete Product By ID");
 		heading.setStyle("-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #007bff;");
 
-		Label productID1 = new Label("Enter Product Price:");
+		Label productID1 = new Label("Enter Product ID:");
 		TextField titleField1 = new TextField();
 		
 		// Create a Delete button and set its visibility to false
