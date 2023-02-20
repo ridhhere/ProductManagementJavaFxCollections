@@ -9,7 +9,8 @@ public interface ProductDAO {
 	List<Product> viewAllProduct();
 	Product viewProduct(int pid);
 	void deleteProduct(int pid);
-	void updateProduct(int pid);
+	Product updateProduct(int pid);
 	void buyProduct();
 	void addProduct();
+	Product updateProduct(int pid, String name, int qty, int price);
 	}

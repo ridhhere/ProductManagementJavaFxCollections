@@ -4,7 +4,10 @@ package com.pms.client;
 import com.pms.details.ProductDetails;
 import com.pms.details.ProductDetailsGUI;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,9 +17,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ProductClientGUI extends Application {
 	ProductDetailsGUI productDetailsGui = new ProductDetailsGUI();
+private static final int INACTIVITY_TIMEOUT = 5 * 60 * 1000; // 5 minutes in milliseconds
+    
+    private long lastInteractionTime;
 
     @Override
     public void start(Stage stage) {
@@ -56,6 +63,28 @@ public class ProductClientGUI extends Application {
         
         // Set the title of the window to "Product Management System"
         stage.setTitle("Product Management System");
+        
+        
+        scene.setOnMouseMoved(e -> {
+            // Update last interaction time on mouse movement
+            lastInteractionTime = System.currentTimeMillis();
+        });
+        
+        scene.setOnKeyTyped(e -> {
+            // Update last interaction time on key press
+            lastInteractionTime = System.currentTimeMillis();
+        });
+        
+        // Create a timeline that checks for inactivity every second
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), e -> {
+            if (System.currentTimeMillis() - lastInteractionTime > INACTIVITY_TIMEOUT) {
+                // Inactivity timeout exceeded, shut down the app
+                Platform.exit();
+            }
+        }));
+        
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
         
         // Set the Scene of the window
         stage.setScene(scene);

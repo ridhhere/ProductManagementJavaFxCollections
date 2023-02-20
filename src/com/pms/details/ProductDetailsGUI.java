@@ -66,6 +66,8 @@ public class ProductDetailsGUI{
         button1.setOnAction(e -> addUserGUI.addProductGUI());
         button2.setOnAction(e -> addUserGUI.viewAllProductGUI());
         button3.setOnAction(e -> addUserGUI.viewProductByIDGUI());
+        button4.setOnAction(e -> addUserGUI.updateProductByIDGUI());
+        button5.setOnAction(e -> addUserGUI.deleteProductGUI());
         button6.setOnAction(e -> primaryStage.close());
 
         
