@@ -25,17 +25,27 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ProductCrudGUI {
-	ProductDaoImpl productDaoImpl1 = new ProductDaoImpl();
+	ProductDaoImpl productDaoImpl = new ProductDaoImpl();
 	public Stage firstStage;
 	public Stage secondStage;
 	public Stage thirdStage;
 	public Stage fourthStage;
 	public Stage fifthStage;
-
+	
+	
 	public void addProductGUI() {
 		firstStage = new Stage();
 		// Create a VBox layout
 		VBox vbox1 = new VBox();
+
+		// Create a Scene with the VBox layout
+		Scene scene1 = new Scene(vbox1);
+
+		// Set the Scene of the window
+		firstStage.setScene(scene1);
+		
+		// Set the title of the window to "Product Management System"
+		firstStage.setTitle("Add Product Page");
 
 		// Create a heading label
 		Label heading = new Label("Add Products");
@@ -65,7 +75,7 @@ public class ProductCrudGUI {
 				int productPrice1 = Integer.parseInt(titleField4.getText());
 
 				// saving value to object
-				productDaoImpl1.addProduct(productID1, productName1, productQuantity1, productPrice1);
+				productDaoImpl.addProduct(productID1, productName1, productQuantity1, productPrice1);
 
 				// Clear the form fields
 				titleField1.clear();
@@ -96,15 +106,6 @@ public class ProductCrudGUI {
 		vbox1.setPrefWidth(500);
 		vbox1.setPrefHeight(650);
 
-		// Create a Scene with the VBox layout
-		Scene scene1 = new Scene(vbox1);
-
-		// Set the title of the window to "Product Management System"
-		firstStage.setTitle("Add Product Page");
-
-		// Set the Scene of the window
-		firstStage.setScene(scene1);
-
 		// Show the window
 		firstStage.show();
 	}
@@ -113,6 +114,15 @@ public class ProductCrudGUI {
 		secondStage = new Stage();
 		// Create a VBox layout
 		VBox vbox1 = new VBox();
+		
+		// Create a Scene with the VBox layout
+		Scene scene1 = new Scene(vbox1);
+
+		// Set the Scene of the window
+		secondStage.setScene(scene1);
+		
+		// Set the title of the window to "Product Management System"
+		secondStage.setTitle("View All Product");
 
 		// Create a heading label
 		Label heading = new Label("View All Products");
@@ -121,7 +131,7 @@ public class ProductCrudGUI {
 		// Create some sample data
 		ObservableList<TableDisplay> rows = FXCollections.observableArrayList();
 
-		for (Product p : productDaoImpl1.viewAllProduct()) {
+		for (Product p : productDaoImpl.viewAllProduct()) {
 			int value1 = p.getPid();
 			String value2 = p.getPname();
 			int value3 = p.getPrice();
@@ -155,23 +165,25 @@ public class ProductCrudGUI {
 		vbox1.setPrefWidth(500);
 		vbox1.setPrefHeight(650);
 
-		// Create a Scene with the VBox layout
-		Scene scene1 = new Scene(vbox1);
-
-		// Set the title of the window to "Product Management System"
-		secondStage.setTitle("View All Product");
-
-		// Set the Scene of the window
-		secondStage.setScene(scene1);
-
 		// Show the window
 		secondStage.show();
 	}
 
 	public void viewProductByIDGUI() {
 		thirdStage = new Stage();
+		
 		// Create a VBox layout
 		VBox vbox1 = new VBox();
+		
+		// Create a Scene with the VBox layout
+		Scene scene1 = new Scene(vbox1);
+		
+		// Set the Scene of the window
+		thirdStage.setScene(scene1);
+
+		// Set the title of the window to "Product Management System"
+		thirdStage.setTitle("View Product");
+
 
 		// Create a heading label
 		Label heading = new Label("View Product By ID");
@@ -191,10 +203,10 @@ public class ProductCrudGUI {
 				// Create some sample data
 				ObservableList<TableDisplay> rows = FXCollections.observableArrayList();
 
-				int value1 = productDaoImpl1.viewProduct(productID).getPid();
-				String value2 = productDaoImpl1.viewProduct(productID).getPname();
-				int value3 = productDaoImpl1.viewProduct(productID).getPrice();
-				int value4 = productDaoImpl1.viewProduct(productID).getQty();
+				int value1 = productDaoImpl.viewProduct(productID).getPid();
+				String value2 = productDaoImpl.viewProduct(productID).getPname();
+				int value3 = productDaoImpl.viewProduct(productID).getPrice();
+				int value4 = productDaoImpl.viewProduct(productID).getQty();
 				rows.add(new TableDisplay(value1, value2, value3, value4));
 
 				// Create table columns
@@ -239,14 +251,6 @@ public class ProductCrudGUI {
 		vbox1.setPrefWidth(500);
 		vbox1.setPrefHeight(650);
 
-		// Create a Scene with the VBox layout
-		Scene scene1 = new Scene(vbox1);
-
-		// Set the title of the window to "Product Management System"
-		thirdStage.setTitle("View Product");
-
-		// Set the Scene of the window
-		thirdStage.setScene(scene1);
 
 		// Show the window
 		thirdStage.show();
@@ -254,8 +258,18 @@ public class ProductCrudGUI {
 
 	public void updateProductByIDGUI() {
 		fourthStage = new Stage();
+		
 		// Create a VBox layout
 		VBox vbox1 = new VBox();
+		
+		// Create a Scene with the VBox layout
+		Scene scene1 = new Scene(vbox1);
+
+		// Set the Scene of the window
+		fourthStage.setScene(scene1);
+
+		// Set the title of the window to "Product Management System"
+		fourthStage.setTitle("Update Product");
 
 		// Create a heading label
 		Label heading = new Label("Update Product By ID");
@@ -286,7 +300,7 @@ public class ProductCrudGUI {
 
 				// Create some sample data
 				ObservableList<TableDisplay> rows = FXCollections.observableArrayList();
-				Product productDaoImpl2 = productDaoImpl1.updateProduct(productID, productName1, productQuantity1,
+				Product productDaoImpl2 = productDaoImpl.updateProduct(productID, productName1, productQuantity1,
 						productPrice1);
 				int value1 = productDaoImpl2.getPid();
 				String value2 = productDaoImpl2.getPname();
@@ -337,23 +351,24 @@ public class ProductCrudGUI {
 		vbox1.setPrefWidth(500);
 		vbox1.setPrefHeight(650);
 
-		// Create a Scene with the VBox layout
-		Scene scene1 = new Scene(vbox1);
-
-		// Set the title of the window to "Product Management System"
-		fourthStage.setTitle("Update Product");
-
-		// Set the Scene of the window
-		fourthStage.setScene(scene1);
-
 		// Show the window
 		fourthStage.show();
 	}
 
 	public void deleteProductGUI() {
 		fifthStage = new Stage();
+		
 		// Create a VBox layout
 		VBox vbox1 = new VBox();
+		
+		// Create a Scene with the VBox layout
+		Scene scene1 = new Scene(vbox1);
+
+		// Set the Scene of the window
+		fifthStage.setScene(scene1);
+		
+		// Set the title of the window to "Product Management System"
+		fifthStage.setTitle("Delete Product");
 
 		// Create a heading label
 		Label heading = new Label("Delete Product By ID");
@@ -379,10 +394,10 @@ public class ProductCrudGUI {
 				// Create some sample data
 				ObservableList<TableDisplay> rows = FXCollections.observableArrayList();
 
-				int value1 = productDaoImpl1.viewProduct(productID).getPid();
-				String value2 = productDaoImpl1.viewProduct(productID).getPname();
-				int value3 = productDaoImpl1.viewProduct(productID).getPrice();
-				int value4 = productDaoImpl1.viewProduct(productID).getQty();
+				int value1 = productDaoImpl.viewProduct(productID).getPid();
+				String value2 = productDaoImpl.viewProduct(productID).getPname();
+				int value3 = productDaoImpl.viewProduct(productID).getPrice();
+				int value4 = productDaoImpl.viewProduct(productID).getQty();
 				rows.add(new TableDisplay(value1, value2, value3, value4));
 
 				// Create table columns
@@ -417,7 +432,7 @@ public class ProductCrudGUI {
 				    if (result.get() == ButtonType.OK) {
 				        // User clicked "OK", proceed with delete
 				        // Perform some action to delete data
-				    	productDaoImpl1.deleteProduct(productID);
+				    	productDaoImpl.deleteProduct(productID);
 				        tableView.getItems().clear();
 				    } else {
 				        // User clicked "Cancel", do nothing
@@ -446,15 +461,6 @@ public class ProductCrudGUI {
 		vbox1.setSpacing(20);
 		vbox1.setPrefWidth(500);
 		vbox1.setPrefHeight(650);
-
-		// Create a Scene with the VBox layout
-		Scene scene1 = new Scene(vbox1);
-
-		// Set the title of the window to "Product Management System"
-		fifthStage.setTitle("Delete Product");
-
-		// Set the Scene of the window
-		fifthStage.setScene(scene1);
 
 		// Show the window
 		fifthStage.show();
